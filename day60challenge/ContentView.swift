@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+struct User: Codable {
+    let id: Int
+    let isActive: Bool
+    let name: String
+    
+    let friends: [Friend]
+    
+    struct Friend: Codable {
+        let id: Int
+        let name: String
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         VStack {
