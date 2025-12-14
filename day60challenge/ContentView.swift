@@ -16,7 +16,7 @@ struct User: Identifiable, Codable {
     let email: String
     let address: String
     let about: String
-    let registered: String
+    let registered: Date
     let tags: [String]
     let friends: [Friend]
 }
@@ -63,8 +63,9 @@ struct ContentView: View {
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let decodedUsers = try JSONDecoder().decode([User].self, from: data)
-            users = decodedUsers
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            users = try decoder.decode([User].self, from: data)
         } catch {
             print("Failed to load users:", error)
         }

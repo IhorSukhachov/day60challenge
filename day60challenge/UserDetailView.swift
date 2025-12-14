@@ -19,7 +19,7 @@ struct UserDetailView: View {
 
                     Text(user.isActive ? "🟢 Active" : "⚪️ Offline")
                         .foregroundStyle(user.isActive ? .green : .gray)
-
+                    Text("Registered: \(user.registered.formatted(date: .abbreviated, time: .omitted))")
                     Text("Age: \(user.age)")
                     Text("Company: \(user.company)")
                     Text("Email: \(user.email)")
@@ -50,5 +50,5 @@ struct UserDetailView: View {
 }
 
 #Preview {
-    UserDetailView(user: User(id: "", isActive: false, name: "", age: 10, company: "", email: "", address: "", about: "", registered: "", tags: [""], friends: []))
+    UserDetailView(user: User(id: "", isActive: false, name: "", age: 10, company: "", email: "", address: "", about: "", registered: .now, tags: [""], friends: []))
 }
