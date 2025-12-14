@@ -16,7 +16,7 @@ struct UserDetailView: View {
                     Text(user.name)
                         .font(.largeTitle)
                         .bold()
-
+                    
                     Text(user.isActive ? "🟢 Active" : "⚪️ Offline")
                         .foregroundStyle(user.isActive ? .green : .gray)
                     Text("Registered: \(user.registered.formatted(date: .abbreviated, time: .omitted))")
@@ -25,19 +25,19 @@ struct UserDetailView: View {
                     Text("Email: \(user.email)")
                     Text("Address: \(user.address)")
                 }
-
+                
                 Divider()
-
+                
                 Text("About")
                     .font(.headline)
-
+                
                 Text(user.about)
-
+                
                 Divider()
-
+                
                 Text("Friends")
                     .font(.headline)
-
+                
                 ForEach(user.friends) { friend in
                     Text(friend.name)
                 }
