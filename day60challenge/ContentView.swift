@@ -33,13 +33,13 @@ struct ContentView: View {
         NavigationStack {
             List(users) { user in
                 NavigationLink {
-                   UserDetailView(user: user)
+                    UserDetailView(user: user)
                 } label: {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(user.name)
                                 .font(.headline)
-
+                            
                             Text(user.isActive ? "Active" : "Offline")
                                 .font(.caption)
                                 .foregroundStyle(user.isActive ? .green : .gray)
@@ -55,12 +55,12 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func loadUsers() async {
         guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
             return
         }
-
+        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
