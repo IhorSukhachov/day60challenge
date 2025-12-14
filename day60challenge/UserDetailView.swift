@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct UserDetailView: View {
+    let user: User
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Group {
+                    Text(user.name)
+                        .font(.largeTitle)
+                        .bold()
+
+                    Text(user.isActive ? "🟢 Active" : "⚪️ Offline")
+                        .foregroundStyle(user.isActive ? .green : .gray)
+
+                    Text("Age: \(user.age)")
+                    Text("Company: \(user.company)")
+                    Text("Email: \(user.email)")
+                    Text("Address: \(user.address)")
+                }
+
+                Divider()
+
+                Text("About")
+                    .font(.headline)
+
+                Text(user.about)
+
+                Divider()
+
+                Text("Friends")
+                    .font(.headline)
+
+                ForEach(user.friends) { friend in
+                    Text(friend.name)
+                }
+            }
+            .padding()
+        }
+        .navigationTitle(user.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    UserDetailView()
+    UserDetailView(user: User(id: "", isActive: false, name: "", age: 10, company: "", email: "", address: "", about: "", registered: "", tags: [""], friends: []))
 }

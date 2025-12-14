@@ -33,7 +33,7 @@ struct ContentView: View {
         NavigationStack {
             List(users) { user in
                 NavigationLink {
-     //               UserDetailView(user: user)
+                   UserDetailView(user: user)
                 } label: {
                     HStack {
                         VStack(alignment: .leading) {
