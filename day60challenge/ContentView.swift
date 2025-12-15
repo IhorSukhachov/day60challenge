@@ -154,7 +154,11 @@ struct ContentView: View {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            users = try decoder.decode([User].self, from: data)
+            let decodedUsers = try decoder.decode([User].self, from: data)
+            for user in decodedUsers {
+                modelContext.insert(user)
+            }
+            
         } catch {
             print("Failed to load users:", error)
         }
