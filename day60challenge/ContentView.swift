@@ -8,7 +8,7 @@ import SwiftData
 import SwiftUI
 
 @Model
-class User: Identifiable, Codable {
+final class User: Identifiable, Codable {
     var id: String
     var isActive: Bool
     var name: String
@@ -87,7 +87,7 @@ class User: Identifiable, Codable {
 }
 
 @Model
-class Friend: Identifiable, Codable {
+final class Friend: Identifiable, Codable {
     var id: String
     var name: String
 
