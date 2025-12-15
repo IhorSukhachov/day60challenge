@@ -115,7 +115,8 @@ class Friend: Identifiable, Codable {
 }
 
 struct ContentView: View {
-    @State private var users: [User] = []
+    @Query(sort: \User.name) private var users: [User]
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack {
